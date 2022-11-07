@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Polls das Eleições</title>
+
+    <link rel="stylesheet"
+          href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+<div class="main">
+    <h1>Enquetes disponiveis</h1>
+    {% if latest_question_list %}
+    <ul>
+        {% for question in latest_question_list %}
+        <li><a href="{% url 'polls:vote' question.id %}">{{ question.question_text}}</a></li></br></br>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>No polls are available</p>
+    {% endif %}
+</div>
+</body>
+</html>
